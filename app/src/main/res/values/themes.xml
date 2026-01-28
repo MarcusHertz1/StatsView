@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.M7l5t1" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="Theme.M7l5t1" parent="Base.Theme.M7l5t1" />
+</resources>
