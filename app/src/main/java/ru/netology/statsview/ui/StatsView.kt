@@ -81,14 +81,15 @@ class StatsView @JvmOverloads constructor(
             return
         }
         var startAngle = -90F
-        data.forEachIndexed { index, data ->
-            val angle = data * 360F
+        val allData = data.sum()
+        data.forEachIndexed { index, item ->
+            val angle = item.getCoefficientOfAll(allData) * 360F
             paint.color = colors.getOrElse(index) {generateRandomColor()}
             canvas.drawArc(oval, startAngle, angle, false, paint)
             startAngle += angle
         }
         canvas.drawText(
-            "%.2f%%".format(data.sum() * 100),
+            "%.2f%%".format(allData.getCoefficientOfAll(allData) * 100),
             center.x,
             center.y + textPaint.textSize / 4,
             textPaint
@@ -96,4 +97,6 @@ class StatsView @JvmOverloads constructor(
     }
 
     private fun generateRandomColor(): Int = Random.nextInt(0xFF000000.toInt(), 0xFFFFFFFF.toInt())
+
+    private fun Float.getCoefficientOfAll(all:Float) = this / all
 }
