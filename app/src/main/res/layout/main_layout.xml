@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <ru.netology.statsview.ui.StatsView
         android:id="@+id/statsView"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        app:textSize="40.sp"
+        app:lineWidth="16.dp"
+        app:color1="#391279"
+        app:color2="#939124"
+        app:color3="#182957"
+        app:color4="#582012"/>
 </FrameLayout>
