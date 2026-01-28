@@ -11,6 +11,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = MainLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        findViewById<StatsView>(R.id.statsView).data = listOf(100F, 400F, 200F, 300F)
+        findViewById<StatsView>(R.id.statsView).data = listOf(500F, 500F, 500F, 500F)
     }
 }

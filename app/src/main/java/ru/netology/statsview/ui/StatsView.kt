@@ -76,6 +76,10 @@ class StatsView @JvmOverloads constructor(
         )
     }
 
+    val smallCirclePaint = Paint(
+        Paint.ANTI_ALIAS_FLAG
+    ).apply { color = colors.first() }
+
     override fun onDraw(canvas: Canvas) {
         if (data.isEmpty()) {
             return
@@ -84,10 +88,16 @@ class StatsView @JvmOverloads constructor(
         val allData = data.sum()
         data.forEachIndexed { index, item ->
             val angle = item.getCoefficientOfAll(allData) * 360F
-            paint.color = colors.getOrElse(index) {generateRandomColor()}
+            paint.color = colors.getOrElse(index) { generateRandomColor() }
             canvas.drawArc(oval, startAngle, angle, false, paint)
             startAngle += angle
         }
+        canvas.drawCircle(
+            center.x,
+            (lineWidth / 2).toFloat(),
+            (lineWidth / 2).toFloat(),
+            smallCirclePaint
+        )
         canvas.drawText(
             "%.2f%%".format(allData.getCoefficientOfAll(allData) * 100),
             center.x,
@@ -98,5 +108,5 @@ class StatsView @JvmOverloads constructor(
 
     private fun generateRandomColor(): Int = Random.nextInt(0xFF000000.toInt(), 0xFFFFFFFF.toInt())
 
-    private fun Float.getCoefficientOfAll(all:Float) = this / all
+    private fun Float.getCoefficientOfAll(all: Float) = this / all
 }
